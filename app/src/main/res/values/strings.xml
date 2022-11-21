@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name" translatable="false">Examen 1</string>
+    <string name="delete">Borrar</string>
+    <string name="add">Añadir</string>
+    <string name="cancel">Cancelar</string>
+    <string name="add_material">Añadir material</string>
+    <string name="name">Nombre:</string>
+    <string name="hint_name">Nombre</string>
+    <string name="hint_place">Lugar de instalación</string>
+    <string name="place">Lugar:</string>
+    <string name="choose_type">Elige el tipo:</string>
+    <string name="year">Año:</string>
+    <string name="hint_year" translatable="false">2020</string>
+    <string name="processor">Procesador:</string>
+    <string name="computer">Ordenador</string>
+    <string name="screen">Pantalla</string>
+    <string name="printer">Impresora</string>
+    <string name="show_delete_information">La lista ha sido borrada</string>
+    <string name="inches">Pulgadas:</string>
+    <string name="hint_inches" translatable="false">17</string>
+    <string name="error_fields_form">Debes de rellenar todos los campos</string>
+    <string name="accept">Aceptar</string>
+    <string name="summary">Resumen</string>
+    <string name="code">Código:</string>
+    <string name="intel" translatable="false">Intel</string>
+    <string name="amd" translatable="false">AMD</string>
+    <string name="photocopies">Fotocopias</string>
+    <string name="identification_code">Código Identificativo</string>
+    <string name="device">Dispositivo:</string>
+    <string name="photocopies_summary">Fotocopias:</string>
+    <string name="yes">Sí</string>
+    <string name="no" translatable="false">No</string>
+    <string name="error_field_year">El año introducido es inválido</string>
+    <string name="error_field_inches">Las pulgadas introducidas son inválidas</string>
+    <string name="error_delete_list">No hay componentes en la lista</string>
+    <string-array name="type_array">
+        <item>@string/computer</item>
+        <item>@string/screen</item>
+        <item>@string/printer</item>
+    </string-array>
+</resources>

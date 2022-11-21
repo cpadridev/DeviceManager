@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Form">
+
+    <!-- Title -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.25">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal|bottom"
+            android:text="@string/add_material"
+            android:textSize="32dp" />
+    </LinearLayout>
+
+    <!-- Name -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="25dp"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="@string/name"
+            android:textSize="16dp"
+            android:textStyle="bold|italic" />
+
+        <EditText
+            android:id="@+id/edtName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="25dp"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:hint="@string/hint_name" />
+    </LinearLayout>
+
+    <!-- Place -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="25dp"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="@string/place"
+            android:textSize="16dp"
+            android:textStyle="bold|italic" />
+
+        <EditText
+            android:id="@+id/edtPlace"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="25dp"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:hint="@string/hint_place" />
+    </LinearLayout>
+
+    <!-- Device type -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/choose_type"
+            android:textSize="16dp"
+            android:textStyle="bold|italic" />
+
+        <Spinner
+            android:id="@+id/spnDevice"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center" />
+    </LinearLayout>
+
+    <!-- Computer -->
+    <LinearLayout
+        android:id="@+id/computerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="25dp"
+                android:layout_weight="1"
+                android:gravity="right|center_vertical"
+                android:text="@string/year"
+                android:textSize="16dp"
+                android:textStyle="bold|italic" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center|left"
+                android:layout_weight="1">
+
+                <com.santalu.maskara.widget.MaskEditText
+                    android:id="@+id/edtYear"
+                    android:layout_width="55dp"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_year"
+                    android:inputType="number"
+                    android:maxLength="4"
+                    app:mask="####" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="25dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical|right"
+                android:text="@string/processor"
+                android:textSize="16dp"
+                android:textStyle="bold|italic" />
+
+            <RadioGroup
+                android:id="@+id/rgpProcessor"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:checkedButton="@id/rbtIntel">
+
+                <RadioButton
+                    android:id="@+id/rbtIntel"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/intel"
+                    android:textStyle="italic" />
+
+
+                <RadioButton
+                    android:id="@+id/rbtAmd"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/amd"
+                    android:textStyle="italic" />
+            </RadioGroup>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Screen -->
+    <LinearLayout
+        android:id="@+id/screenLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="25dp"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="@string/inches"
+            android:textSize="16dp"
+            android:textStyle="bold|italic" />
+
+        <com.santalu.maskara.widget.MaskEditText
+            android:id="@+id/edtInches"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="175dp"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:hint="@string/hint_inches"
+            android:inputType="number"
+            android:maxLength="2"
+            app:mask="##" />
+    </LinearLayout>
+
+    <!-- Printer -->
+    <LinearLayout
+        android:id="@+id/printerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:visibility="gone">
+
+        <CheckBox
+            android:id="@+id/chkPhotocopies"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/photocopies"
+            android:textSize="16dp"
+            android:textStyle="italic" />
+    </LinearLayout>
+
+    <!-- Buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btnAdd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:gravity="center"
+                android:text="@string/add"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btnCancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:gravity="center"
+                android:text="@string/cancel"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
