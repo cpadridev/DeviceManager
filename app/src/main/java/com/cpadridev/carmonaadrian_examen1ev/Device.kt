@@ -3,17 +3,22 @@ package com.cpadridev.carmonaadrian_examen1ev
 import android.os.Parcelable
 
 abstract class Device(var name: String, var place: String, var device: String) : Parcelable {
-    var code: String =
+    init {
         when (name.length) {
             1 -> {
-                name + "00"
+                name += "00"
             }
             2 -> {
-                name + "0"
+                name += "0"
             }
-            else -> {
-                name.substring(0, 3)
-            }
+        }
+    }
+
+    var code: String =
+        if (name.length >= 3) {
+            name.substring(0, 3)
+        } else {
+            name
         }
 
     override fun toString(): String {

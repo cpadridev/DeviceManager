@@ -15,7 +15,12 @@ class Screen(name: String, place: String, device: String, var inches: Int) :
     )
 
     init {
-        code += inches.toString() + name.substring(name.length - 3)
+        code += inches.toString() +
+                if (name.length > 3) {
+                    name.substring(name.length - 3)
+                } else {
+                    name
+                }
     }
 
     override fun describeContents(): Int {

@@ -12,9 +12,7 @@ import com.cpadridev.carmonaadrian_examen1ev.databinding.FormBinding
 
 class Form : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     private lateinit var binding: FormBinding
-    private lateinit var computer: Computer
-    private lateinit var screen: Screen
-    private lateinit var printer: Printer
+    private lateinit var device: Device
 
     private var inventory: ArrayList<Device> = ArrayList()
 
@@ -51,7 +49,7 @@ class Form : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 when (binding.spnDevice.selectedItem) {
                     typeArray[0] -> {
                         if (binding.edtYear.text?.length == 4) {
-                            computer = Computer(
+                            device = Computer(
                                 binding.edtName.text.toString(),
                                 binding.edtPlace.text.toString(),
                                 binding.spnDevice.selectedItem.toString(),
@@ -62,8 +60,6 @@ class Form : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                                     "AMD"
                                 }
                             )
-
-                            bundle.putParcelable("Computer", computer)
 
                             check = true
                         } else {
@@ -76,14 +72,12 @@ class Form : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                     }
                     typeArray[1] -> {
                         if (binding.edtInches.text?.length == 2) {
-                            screen = Screen(
+                            device = Screen(
                                 binding.edtName.text.toString(),
                                 binding.edtPlace.text.toString(),
                                 binding.spnDevice.selectedItem.toString(),
                                 binding.edtInches.text.toString().toInt()
                             )
-
-                            bundle.putParcelable("Screen", screen)
 
                             check = true
                         } else {
@@ -95,20 +89,19 @@ class Form : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                         }
                     }
                     else -> {
-                        printer = Printer(
+                        device = Printer(
                             binding.edtName.text.toString(),
                             binding.edtPlace.text.toString(),
                             binding.spnDevice.selectedItem.toString(),
                             binding.chkPhotocopies.isChecked
                         )
 
-                        bundle.putParcelable("Printer", printer)
-
                         check = true
                     }
                 }
 
                 if (check) {
+                    bundle.putParcelable("Device", device)
                     bundle.putParcelableArrayList("Inventory", inventory)
 
                     val intent = Intent(this, IdentificationCode::class.java).apply {

@@ -12,9 +12,7 @@ import java.util.*
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
-    private var computer: Device? = null
-    private var screen: Device? = null
-    private var printer: Device? = null
+    private var device: Device? = null
     private var inventory: ArrayList<Device> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,21 +24,19 @@ class MainActivity : AppCompatActivity() {
         if (intent.hasExtra(Intent.EXTRA_TEXT)) {
             val bundle = intent.getBundleExtra(Intent.EXTRA_TEXT)
 
-            computer = bundle?.getParcelable("Computer")
-            screen = bundle?.getParcelable("Screen")
-            printer = bundle?.getParcelable("Printer")
+            device = bundle?.getParcelable("Device")
 
             inventory = bundle?.getParcelableArrayList("Inventory")!!
         }
 
-        if (computer != null) {
-            inventory.add(computer!!)
+        if (device is Computer) {
+            inventory.add(device!!)
         }
-        if (screen != null) {
-            inventory.add(screen!!)
+        if (device is Screen) {
+            inventory.add(device!!)
         }
-        if (printer != null) {
-            inventory.add(printer!!)
+        if (device is Printer) {
+            inventory.add(device!!)
         }
 
         for (item in inventory) {

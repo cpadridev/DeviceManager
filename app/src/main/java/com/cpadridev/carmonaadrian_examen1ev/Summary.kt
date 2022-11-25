@@ -9,9 +9,7 @@ import com.cpadridev.carmonaadrian_examen1ev.databinding.SummaryBinding
 class Summary : AppCompatActivity() {
     private lateinit var binding: SummaryBinding
 
-    private var computer: Computer? = null
-    private var screen: Screen? = null
-    private var printer: Printer? = null
+    private var device: Device? = null
     private var inventory: ArrayList<Device> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,59 +21,41 @@ class Summary : AppCompatActivity() {
         if (intent.hasExtra(Intent.EXTRA_TEXT)) {
             val bundle = intent.getBundleExtra(Intent.EXTRA_TEXT)
 
-            computer = bundle?.getParcelable("Computer")
-            screen = bundle?.getParcelable("Screen")
-            printer = bundle?.getParcelable("Printer")
+            device = bundle?.getParcelable("Device")
 
             inventory = bundle?.getParcelableArrayList("Inventory")!!
         }
 
         val bundle = Bundle()
 
-        if (computer != null) {
+        binding.txvName.text = device?.name
+        binding.txvPlace.text = device?.place
+        binding.txvDevice.text = device?.device
+
+        if (device is Computer) {
             binding.computerLayout.isVisible = true
-            binding.screenLayout.isVisible = false
-            binding.printerLayout.isVisible = false
 
-            binding.txvName.text = computer?.name
-            binding.txvPlace.text = computer?.place
-            binding.txvDevice.text = computer?.device
-            binding.txvYear.text = computer?.year.toString()
-            binding.txvProcessor.text = computer?.processor
-
-            bundle.putParcelable("Computer", computer)
+            binding.txvYear.text = (device as Computer).year.toString()
+            binding.txvProcessor.text = (device as Computer).processor
         }
-        if (screen != null) {
-            binding.computerLayout.isVisible = false
+        if (device is Screen) {
             binding.screenLayout.isVisible = true
-            binding.printerLayout.isVisible = false
 
-            binding.txvName.text = screen?.name
-            binding.txvPlace.text = screen?.place
-            binding.txvDevice.text = screen?.device
-            binding.txvInches.text = screen?.inches.toString()
-
-            bundle.putParcelable("Screen", screen)
+            binding.txvInches.text = (device as Screen).inches.toString()
         }
-        if (printer != null) {
-            binding.computerLayout.isVisible = false
-            binding.screenLayout.isVisible = false
+        if (device is Printer) {
             binding.printerLayout.isVisible = true
 
-            binding.txvName.text = printer?.name
-            binding.txvPlace.text = printer?.place
-            binding.txvDevice.text = printer?.device
             binding.txvPhotocopies.text =
-                if (printer?.photocopies == true) {
+                if ((device as Printer).photocopies) {
                     getString(R.string.yes)
                 } else {
                     getString(R.string.no)
                 }
-
-            bundle.putParcelable("Printer", printer)
         }
 
         binding.btnAccept.setOnClickListener {
+            bundle.putParcelable("Device", device)
             bundle.putParcelableArrayList("Inventory", inventory)
 
             val intent = Intent(this, MainActivity::class.java).apply {

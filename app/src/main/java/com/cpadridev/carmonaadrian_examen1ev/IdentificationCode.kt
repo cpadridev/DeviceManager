@@ -8,9 +8,7 @@ import com.cpadridev.carmonaadrian_examen1ev.databinding.IdentificationCodeBindi
 class IdentificationCode : AppCompatActivity() {
     private lateinit var binding: IdentificationCodeBinding
 
-    private var computer: Computer? = null
-    private var screen: Screen? = null
-    private var printer: Printer? = null
+    private var device: Device? = null
     private var inventory: ArrayList<Device> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,28 +20,23 @@ class IdentificationCode : AppCompatActivity() {
         if (intent.hasExtra(Intent.EXTRA_TEXT)) {
             val bundle = intent.getBundleExtra(Intent.EXTRA_TEXT)
 
-            computer = bundle?.getParcelable("Computer")
-            screen = bundle?.getParcelable("Screen")
-            printer = bundle?.getParcelable("Printer")
-
+            device = bundle?.getParcelable("Device")
             inventory = bundle?.getParcelableArrayList("Inventory")!!
         }
 
         val bundle = Bundle()
 
-        if (computer != null) {
-            binding.txvCode.text = computer?.code
-            bundle.putParcelable("Computer", computer)
+        if (device is Computer) {
+            binding.txvCode.text = device?.code
         }
-        if (screen != null) {
-            binding.txvCode.text = screen?.code
-            bundle.putParcelable("Screen", screen)
+        if (device is Screen) {
+            binding.txvCode.text = device?.code
         }
-        if (printer != null) {
-            binding.txvCode.text = printer?.code
-            bundle.putParcelable("Printer", printer)
+        if (device is Printer) {
+            binding.txvCode.text = device?.code
         }
 
+        bundle.putParcelable("Device", device)
         bundle.putParcelableArrayList("Inventory", inventory)
 
         binding.btnAccept.setOnClickListener {
